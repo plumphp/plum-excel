@@ -4,9 +4,9 @@
 > Plum is a data processing pipeline that helps you to write structured, reusable and well tested data processing code.
 > `plum-excel` includes readers and writers for Microsoft Excel files.
 
-[![Build Status](https://travis-ci.org/plumphp/plum-excel.svg?branch=master)](https://travis-ci.org/plumphp/plum-excel)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/plumphp/plum-csv/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/plumphp/plum-excel/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/plumphp/plum-excel/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/plumphp/plum-excel/?branch=master)
+[![Build Status](https://img.shields.io/travis/plumphp/plum-excel.svg?style=flat)](https://travis-ci.org/plumphp/plum-excel)
+[![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/plumphp/plum-excel.svg?style=flat)](https://scrutinizer-ci.com/g/plumphp/plum-excel/?branch=master)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/plumphp/plum-excel.svg?style=flat)](https://scrutinizer-ci.com/g/plumphp/plum-excel/?branch=master)
 
 Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe.
 
