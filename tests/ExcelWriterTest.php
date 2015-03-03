@@ -1,6 +1,5 @@
 <?php
 
-
 namespace Plum\PlumExcel;
 
 use Mockery;
@@ -10,9 +9,10 @@ use PHPExcel_Settings;
 /**
  * ExcelWriterTest
  *
- * @package Plum\PlumExcel
- * @author  Florian Eckerstorfer <feckerstorfer@2bepublished.at>
- * @group   unit
+ * @package   Plum\PlumExcel
+ * @author    Florian Eckerstorfer <florian@eckerstorfer.co>
+ * @copyright 2015 Florian Eckerstorfer
+ * @group     unit
  */
 class ExcelWriterTest extends \PHPUnit_Framework_TestCase
 {
