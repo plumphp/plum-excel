@@ -1,0 +1,17 @@
+{
+  "name": "plumphp/plum-excel",
+  "require": {
+    "plumphp/plum": "dev-master@dev",
+    "phpoffice/phpexcel": "~1.8"
+  },
+  "require-dev": {
+    "phpunit/phpunit":    "~4.3",
+    "mikey179/vfsStream": "~1.4",
+    "mockery/mockery":    "~0.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "Plum\\PlumExcel\\": "src"
+    }
+  }
+}

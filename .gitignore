@@ -1,0 +1,8 @@
+/.idea/
+/build/
+/composer.phar
+/phpunit.xml
+/vendor/
+/composer.lock
+/examples/*.xls
+/examples/*.xlsx
