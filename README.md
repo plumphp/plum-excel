@@ -29,6 +29,9 @@ Usage
 Please refer to the [Plum documentation](https://github.com/plumphp/plum/blob/master/docs/index.md) for more 
 information.
 
+You can also find examples of how to use `ExcelReader` and `ExcelWriter` in the 
+[`examples/`](https://github.com/plumphp/plum-excel/tree/master/examples) folder.
+
 
 Change Log
 ----------

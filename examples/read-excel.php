@@ -13,6 +13,11 @@ use Plum\PlumExcel\ExcelReader;
 
 require_once __DIR__.'/../vendor/autoload.php';
 
+if (!file_exists(__DIR__.'/example.xlsx')) {
+    echo "Please run the write-excel.php first to generate a Excel file.\n";
+    exit(1);
+}
+
 $excel = PHPExcel_IOFactory::load(__DIR__.'/example.xlsx');
 $reader = new ExcelReader($excel);
 $reader->setHeaderRow(0);

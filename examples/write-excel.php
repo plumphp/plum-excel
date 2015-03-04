@@ -17,4 +17,5 @@ $writer = new ExcelWriter(__DIR__.'/example.xlsx');
 $writer->autoDetectHeader();
 $writer->prepare();
 $writer->writeItem(['Town' => 'Vienna', 'Country' => 'Austria', 'District' => 'Alsergrund', 'DistrictNumber' => 1090]);
+$writer->writeItem(['Town' => 'Vienna', 'Country' => 'Austria', 'District' => 'Mariahilf', 'DistrictNumber' => 1060]);
 $writer->finish();
