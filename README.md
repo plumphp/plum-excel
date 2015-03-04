@@ -11,6 +11,14 @@
 Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe.
 
 
+Features
+-------
+
+- Read Microsoft Excel (`.xlsx` and `.xls`) files
+- Write Microsoft Excel (`.xlsx` and `.xls`) files
+- Uses [PHPExcel](https://github.com/PHPOffice/PHPExcel)
+
+
 Installation
 ------------
 
