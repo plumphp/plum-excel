@@ -158,6 +158,7 @@ class ExcelReaderTest extends \PHPUnit_Framework_TestCase
         $cell->shouldReceive('getValue')->andReturnValues($cellValues);
 
         $cellIterator = Mockery::mock('\PHPExcel_Worksheet_CellIterator', ['rewind' => null, 'next' => Mockery::self()]);
+        $cellIterator->shouldReceive('setIterateOnlyExistingCells')->with(false);
         $cellIterator->shouldReceive('valid')->times(count($cellValid))->andReturnValues($cellValid);
         $cellIterator->shouldReceive('current')->times($cellCount)->andReturn($cell);
 

@@ -98,7 +98,9 @@ class ExcelReader implements ReaderInterface
         foreach ($sheet->getRowIterator($startRow) as $excelRow) {
             $this->data[$rowIndex] = [];
             $columnIndex = 0;
-            foreach ($excelRow->getCellIterator() as $excelCell) {
+            $cellIterator = $excelRow->getCellIterator();
+            $cellIterator->setIterateOnlyExistingCells(false);
+            foreach ($cellIterator as $excelCell) {
                 $this->data[$rowIndex][$this->getKey($header, $columnIndex)] = $excelCell->getValue();
                 $columnIndex++;
             }
@@ -118,7 +120,9 @@ class ExcelReader implements ReaderInterface
         $header = [];
 
         $sheet = $this->excel->getActiveSheet();
-        foreach ($sheet->getRowIterator($headerRow)->current()->getCellIterator() as $cell) {
+        $cellIterator = $sheet->getRowIterator($headerRow)->current()->getCellIterator();
+        $cellIterator->setIterateOnlyExistingCells(false);
+        foreach ($cellIterator as $cell) {
             $header[] = $cell->getValue();
         }
 
