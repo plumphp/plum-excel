@@ -11,6 +11,14 @@
 Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe.
 
 
+Features
+-------
+
+- Read Microsoft Excel (`.xlsx` and `.xls`) files
+- Write Microsoft Excel (`.xlsx` and `.xls`) files
+- Uses [PHPExcel](https://github.com/PHPOffice/PHPExcel)
+
+
 Installation
 ------------
 
@@ -28,6 +36,9 @@ Usage
 
 Please refer to the [Plum documentation](https://github.com/plumphp/plum/blob/master/docs/index.md) for more 
 information.
+
+You can also find examples of how to use `ExcelReader` and `ExcelWriter` in the 
+[`examples/`](https://github.com/plumphp/plum-excel/tree/master/examples) folder.
 
 
 Change Log
