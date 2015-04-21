@@ -61,16 +61,17 @@ class ExcelWriter implements WriterInterface
     private $currentRow = 1;
 
     /**
-     * @param string   $filename
-     * @param PHPExcel $excel
-     * @param string   $format   Format, defaults to `Excel2007`
+     * @param string                       $filename
+     * @param PHPExcel|null                $excel
+     * @param string                       $format   Format, defaults to `Excel2007`
+     * @param PHPExcel_Writer_IWriter|null $writer
      *
      * @codeCoverageIgnore
      */
     public function __construct(
         $filename,
-        PHPExcel $excel = null,
-        $format = 'Excel2007',
+        PHPExcel $excel                 = null,
+        $format                         = 'Excel2007',
         PHPExcel_Writer_IWriter $writer = null
     ) {
         $this->filename = $filename;
