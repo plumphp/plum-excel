@@ -31,7 +31,7 @@ class ExcelWriter implements WriterInterface
     private $filename;
 
     /**
-     * @var string[]
+     * @var string[]|null
      */
     private $header;
 
@@ -112,7 +112,7 @@ class ExcelWriter implements WriterInterface
      */
     public function writeItem($item)
     {
-        if ($this->autoDetectHeader && !$this->header) {
+        if ($this->autoDetectHeader && $this->header === null) {
             $this->header = array_keys($item);
             $this->writeItem($this->header);
         }
