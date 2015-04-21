@@ -92,55 +92,17 @@ class ExcelReaderTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @test
-     * @covers Plum\PlumExcel\ExcelReader::setHeaderRow()
-     * @covers Plum\PlumExcel\ExcelReader::getIterator()
-     * @covers Plum\PlumExcel\ExcelReader::getData()
-     * @covers Plum\PlumExcel\ExcelReader::getHeader()
-     * @covers Plum\PlumExcel\ExcelReader::getKey()
-     */
-    public function getDataReturnsArrayWithKeyIfHeaderRowIsSet()
-    {
-        $this->excel
-            ->shouldReceive('getActiveSheet')
-            ->andReturn($this->getMockWorksheet(
-                [['city', 'country'], ['vienna', 'austria'], ['hamburg', 'germany']],
-                true
-            ));
-
-        $this->reader->setHeaderRow(0);
-        $iterator = $this->reader->getIterator();
-
-        $this->assertEquals('vienna', $iterator[0]['city']);
-        $this->assertEquals('austria', $iterator[0]['country']);
-        $this->assertEquals('hamburg', $iterator[1]['city']);
-        $this->assertEquals('germany', $iterator[1]['country']);
-        $this->assertCount(2, $iterator);
-    }
-
-    /**
      * @param array $data
      *
      * @return Mockery\MockInterface|\PHPExcel_Worksheet
      */
-    protected function getMockWorksheet($data, $header = false)
+    protected function getMockWorksheet($data)
     {
         $rowValid   = [];
         $cellValid  = [];
         $cellValues = [];
         $cellCount  = 0;
         $rowCount   = 0;
-
-        if ($header) {
-            $rowCount++;
-            foreach ($data[0] as $headerCell) {
-                $cellValid[] = true;
-                $cellValues[] = $headerCell;
-                $cellCount++;
-            }
-            $cellValid[] = false;
-            array_shift($data);
-        }
 
         foreach ($data as $dataRow) {
             $rowValid[] = true;

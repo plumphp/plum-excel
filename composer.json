@@ -1,7 +1,7 @@
 {
   "name": "plumphp/plum-excel",
   "require": {
-    "plumphp/plum": "dev-master@dev",
+    "plumphp/plum":       "^0.2",
     "phpoffice/phpexcel": "~1.8"
   },
   "require-dev": {

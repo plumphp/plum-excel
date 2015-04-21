@@ -30,11 +30,6 @@ class ExcelReader implements ReaderInterface
     private $excel;
 
     /**
-     * @var int
-     */
-    private $headerRow;
-
-    /**
      * @var array[][]
      */
     private $data;
@@ -47,18 +42,6 @@ class ExcelReader implements ReaderInterface
     public function __construct(PHPExcel $excel)
     {
         $this->excel = $excel;
-    }
-
-    /**
-     * @param int $headerRow
-     *
-     * @return ExcelReader
-     */
-    public function setHeaderRow($headerRow)
-    {
-        $this->headerRow = $headerRow;
-
-        return $this;
     }
 
     /**
@@ -88,55 +71,19 @@ class ExcelReader implements ReaderInterface
 
         $this->data = [];
         $sheet = $this->excel->getActiveSheet();
-        if ($this->headerRow !== null) {
-            $header = $this->getHeader($this->headerRow + 1);
-        } else {
-            $header = [];
-        }
-        $startRow = $this->headerRow !== null ? $this->headerRow+2 : 1;
         $rowIndex = 0;
-        foreach ($sheet->getRowIterator($startRow) as $excelRow) {
+        foreach ($sheet->getRowIterator(1) as $excelRow) {
             $this->data[$rowIndex] = [];
             $columnIndex = 0;
             $cellIterator = $excelRow->getCellIterator();
             $cellIterator->setIterateOnlyExistingCells(false);
             foreach ($cellIterator as $excelCell) {
-                $this->data[$rowIndex][$this->getKey($header, $columnIndex)] = $excelCell->getValue();
+                $this->data[$rowIndex][] = $excelCell->getValue();
                 $columnIndex++;
             }
             $rowIndex++;
         }
 
         return $this->data;
-    }
-
-    /**
-     * @param int $headerRow
-     *
-     * @return string[]
-     */
-    protected function getHeader($headerRow)
-    {
-        $header = [];
-
-        $sheet = $this->excel->getActiveSheet();
-        $cellIterator = $sheet->getRowIterator($headerRow)->current()->getCellIterator();
-        $cellIterator->setIterateOnlyExistingCells(false);
-        foreach ($cellIterator as $cell) {
-            $header[] = $cell->getValue();
-        }
-
-        return $header;
-    }
-
-    /**
-     * @param string[] $header
-     * @param int      $index
-     *
-     * @return string|int
-     */
-    protected function getKey(array $header, $index)
-    {
-        return isset($header[$index]) ? $header[$index] : $index;
     }
 }
