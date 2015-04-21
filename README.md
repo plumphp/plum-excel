@@ -34,17 +34,19 @@ $ composer require plumphp/plum-excel:@stable
 Usage
 -----
 
-Please refer to the [Plum documentation](https://github.com/plumphp/plum/blob/master/docs/index.md) for more 
+Please refer to the [Plum documentation](https://github.com/plumphp/plum/blob/master/docs/index.md) for more
 information.
 
-You can also find examples of how to use `ExcelReader` and `ExcelWriter` in the 
+You can also find examples of how to use `ExcelReader` and `ExcelWriter` in the
 [`examples/`](https://github.com/plumphp/plum-excel/tree/master/examples) folder.
 
 
 Change Log
 ----------
 
-*No version released.*
+### Version 0.1 (21 April 2015)
+
+- Initial release
 
 
 License
