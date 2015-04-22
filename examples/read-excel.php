@@ -20,7 +20,6 @@ if (!file_exists(__DIR__.'/example.xlsx')) {
 
 $excel = PHPExcel_IOFactory::load(__DIR__.'/example.xlsx');
 $reader = new ExcelReader($excel);
-$reader->setHeaderRow(0);
 foreach ($reader->getIterator() as $row) {
     print_r($row);
 }

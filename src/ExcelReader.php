@@ -13,6 +13,7 @@ namespace Plum\PlumExcel;
 
 use ArrayIterator;
 use PHPExcel;
+use PHPExcel_IOFactory;
 use Plum\Plum\Reader\ReaderInterface;
 
 /**
@@ -35,12 +36,15 @@ class ExcelReader implements ReaderInterface
     private $data;
 
     /**
-     * @param PHPExcel $excel
+     * @param PHPExcel|string $excel
      *
      * @codeCoverageIgnore
      */
-    public function __construct(PHPExcel $excel)
+    public function __construct($excel)
     {
+        if (!$excel instanceof PHPExcel) {
+            $excel = PHPExcel_IOFactory::load($excel);
+        }
         $this->excel = $excel;
     }
 

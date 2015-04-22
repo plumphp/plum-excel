@@ -34,11 +34,49 @@ $ composer require plumphp/plum-excel:@stable
 Usage
 -----
 
-Please refer to the [Plum documentation](https://github.com/plumphp/plum/blob/master/docs/index.md) for more
-information.
+PlumExcel contains a reader and a writer for Plum. Please refer to the 
+[Plum documentation](https://github.com/plumphp/plum/blob/master/docs/index.md) for more information about Plum.
 
 You can also find examples of how to use `ExcelReader` and `ExcelWriter` in the
 [`examples/`](https://github.com/plumphp/plum-excel/tree/master/examples) folder.
+
+### Write Excel files
+
+Writing Excel files is extremely simply. Just pass the filename of the file to the constructor. If you want to add
+a header row call the `autoDetectHeader()` method.
+
+```php
+use Plum\PlumExcel\ExcelWriter;
+
+$writer = new ExcelWriter(__DIR__.'/example.xlsx');
+$writer->autoDetectHeader();
+```
+
+However, if you want more control, you can also pass an instance of `PHPExcel` to the constructor and the format 
+(`Excel2007` or `Excel5`) or an implementation of `PHPExcel_Writer_IWriter`.
+
+```php
+$writer = new ExcelWriter(__DIR__.'/example.xlsx', $excel, 'Excel2007', $writer);
+```
+
+### Read Excel files
+
+Reading Excel files is also pretty simple.
+
+```php
+use Plum\PlumExcel\ExcelReader;
+
+$reader = new ExcelReader(__DIR__.'/example.xlsx');
+```
+
+Instead of a filename you can also pass an instance of `PHPExcel` to the constructor.
+
+```php
+use Plum\PlumExcel\ExcelReader;
+
+$excel = PHPExcel_IOFactory::load(__DIR__.'/example.xlsx');
+$reader = new ExcelReader($excel);
+```
 
 
 Change Log
