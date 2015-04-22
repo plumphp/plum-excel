@@ -137,4 +137,33 @@ class ExcelReaderTest extends \PHPUnit_Framework_TestCase
 
         return $sheet;
     }
+
+    /**
+     * @test
+     * @covers Plum\PlumExcel\ExcelReader::accepts()
+     */
+    public function acceptsReturnsTrueIfPHPExcelIsGiven()
+    {
+        $this->assertTrue(ExcelReader::accepts($this->excel));
+    }
+
+    /**
+     * @test
+     * @covers Plum\PlumExcel\ExcelReader::accepts()
+     */
+    public function acceptsReturnsTrueIfExcelFilenameIsGiven()
+    {
+        $this->assertTrue(ExcelReader::accepts('foo.xls'));
+        $this->assertTrue(ExcelReader::accepts('foo.xlsx'));
+    }
+
+    /**
+     * @test
+     * @covers Plum\PlumExcel\ExcelReader::accepts()
+     */
+    public function acceptsReturnsFalseIfInvalidInputIsGiven()
+    {
+        $this->assertFalse(ExcelReader::accepts('foo.csv'));
+        $this->assertFalse(ExcelReader::accepts([]));
+    }
 }

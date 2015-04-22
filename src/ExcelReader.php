@@ -90,4 +90,14 @@ class ExcelReader implements ReaderInterface
 
         return $this->data;
     }
+
+    /**
+     * @param mixed $input
+     *
+     * @return bool
+     */
+    public static function accepts($input)
+    {
+        return $input instanceof PHPExcel || (is_string($input) && preg_match('/\.(xls|xlsx)$/', $input));
+    }
 }
