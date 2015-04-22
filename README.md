@@ -52,6 +52,12 @@ $writer = new ExcelWriter(__DIR__.'/example.xlsx');
 $writer->autoDetectHeader();
 ```
 
+You can manually set the header names by calling the `setHeader()`  method and passing an array with names.
+
+```php
+$writer->setHeader(['Country Name', 'ISO 3166-1-alpha-2 code']);
+```
+
 However, if you want more control, you can also pass an instance of `PHPExcel` to the constructor and the format 
 (`Excel2007` or `Excel5`) or an implementation of `PHPExcel_Writer_IWriter`.
 
