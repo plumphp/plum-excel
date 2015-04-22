@@ -82,6 +82,11 @@ $reader = new ExcelReader($excel);
 Change Log
 ----------
 
+### Version 0.2 (22 April 2015)
+
+- `ExcelReader` supports filename as input
+- Add support for `Plum\Plum\Reader\ReaderFactory`
+
 ### Version 0.1 (21 April 2015)
 
 - Initial release
