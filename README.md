@@ -34,7 +34,7 @@ $ composer require plumphp/plum-excel:@stable
 Usage
 -----
 
-PlumExcel contains a reader and a writer for Plum. Please refer to the 
+PlumExcel contains a reader and a writer for Plum. Please refer to the
 [Plum documentation](https://github.com/plumphp/plum/blob/master/docs/index.md) for more information about Plum.
 
 You can also find examples of how to use `ExcelReader` and `ExcelWriter` in the
@@ -58,7 +58,7 @@ You can manually set the header names by calling the `setHeader()`  method and p
 $writer->setHeader(['Country Name', 'ISO 3166-1-alpha-2 code']);
 ```
 
-However, if you want more control, you can also pass an instance of `PHPExcel` to the constructor and the format 
+However, if you want more control, you can also pass an instance of `PHPExcel` to the constructor and the format
 (`Excel2007` or `Excel5`) or an implementation of `PHPExcel_Writer_IWriter`.
 
 ```php
@@ -87,6 +87,10 @@ $reader = new ExcelReader($excel);
 
 Change Log
 ----------
+
+### Version 0.2.1 (28 April 2015)
+
+- Fix Plum version
 
 ### Version 0.2 (22 April 2015)
 
