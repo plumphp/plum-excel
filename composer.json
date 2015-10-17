@@ -1,12 +1,12 @@
 {
   "name": "plumphp/plum-excel",
   "require": {
-    "plumphp/plum":       "~0.2",
+    "plumphp/plum":       "~0.4",
     "phpoffice/phpexcel": "~1.8"
   },
   "require-dev": {
-    "phpunit/phpunit":    "~4.3",
-    "mikey179/vfsStream": "~1.4",
+    "phpunit/phpunit":    "~5.0",
+    "mikey179/vfsStream": "~1.6",
     "mockery/mockery":    "~0.9"
   },
   "autoload": {
