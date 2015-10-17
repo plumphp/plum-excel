@@ -91,7 +91,7 @@ use Plum\Plum\Filter\SkipFirstFilter;
 use Plum\PlumExcel\ExcelReader;
 
 $workflow->addConverter(new HeaderConverter());
-$workflow-addFilter(new SkipFirstFilter(1));
+$workflow->addFilter(new SkipFirstFilter(1));
 $workflow->process(new ExcelReader($filename));
 ```
 
