@@ -1,8 +1,9 @@
-<img src="https://florian.ec/img/plum/logo.png" alt="Plum">
-====
+<h1 align="center">
+    <img src="http://cdn.florian.ec/plum-logo.svg" alt="Plum" width="300">
+</h1>
 
-> Plum is a data processing pipeline that helps you to write structured, reusable and well tested data processing code.
-> `plum-excel` includes readers and writers for Microsoft Excel files.
+> PlumExcel includes readers and writers for Microsoft Excel files for Plum.  Plum is a data processing pipeline for
+PHP.
 
 [![Build Status](https://img.shields.io/travis/plumphp/plum-excel.svg?style=flat)](https://travis-ci.org/plumphp/plum-excel)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/plumphp/plum-excel.svg?style=flat)](https://scrutinizer-ci.com/g/plumphp/plum-excel/?branch=master)
@@ -25,10 +26,8 @@ Installation
 You can install `plum-excel` using [Composer](http://getcomposer.org).
 
 ```shell
-$ composer require plumphp/plum-excel:@stable
+$ composer require plumphp/plum-excel
 ```
-
-*Tip:* Replace `@stable` with a version from the [releases page](https://github.com/plumphp/plum-excel/releases).
 
 
 Usage
@@ -82,6 +81,18 @@ use Plum\PlumExcel\ExcelReader;
 
 $excel = PHPExcel_IOFactory::load(__DIR__.'/example.xlsx');
 $reader = new ExcelReader($excel);
+```
+
+Plum can automatically detect the headers by using `Plum\Plum\Converter\HeaderConverter`.
+
+```php
+use Plum\Plum\Converter\HeaderConverter;
+use Plum\Plum\Filter\SkipFirstFilter;
+use Plum\PlumExcel\ExcelReader;
+
+$workflow->addConverter(new HeaderConverter());
+$workflow-addFilter(new SkipFirstFilter(1));
+$workflow->process(new ExcelReader($filename));
 ```
 
 
