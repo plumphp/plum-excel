@@ -15,6 +15,7 @@ use PHPExcel;
 use PHPExcel_IOFactory;
 use PHPExcel_Writer_IWriter;
 use Plum\Plum\Writer\WriterInterface;
+use Cocur\Vale\Vale;
 
 /**
  * ExcelWriter
@@ -114,12 +115,24 @@ class ExcelWriter implements WriterInterface
     public function writeItem($item)
     {
         if ($this->autoDetectHeader && $this->header === null) {
-            $this->header = array_keys($item);
-            $this->writeItem($this->header);
+            $this->handleAutoDetectHeaders($item);
+        }
+
+        if (is_array($item)) {
+            $keys = array_keys($item);
+        } else if ($this->header && is_object($item)) {
+            $keys = $this->header;
+        } else {
+            throw new \InvalidArgumentException(sprintf(
+                'Plum\PlumExcel\ExcelWriter currently only supports array items or objects if headers are set using '.
+                'the setHeader() method. You have passed an item of type "%s" to writeItem().',
+                gettype($item)
+            ));
         }
 
         $column = 0;
-        foreach ($item as $value) {
+        foreach ($keys as $key) {
+            $value = Vale::get($item, $key);
             $this->excel->getActiveSheet()->setCellValueByColumnAndRow($column, $this->currentRow, $value);
             $column++;
         }
@@ -154,5 +167,18 @@ class ExcelWriter implements WriterInterface
             $writer = PHPExcel_IOFactory::createWriter($this->excel, $this->format);
         }
         $writer->save($this->filename);
+    }
+
+    protected function handleAutoDetectHeaders($item)
+    {
+        if (!is_array($item)) {
+            throw new \InvalidArgumentException(sprintf(
+                'Plum\PlumExcel\ExcelWriter currently only supports header detection if the item passed to '.
+                'writeItem() is an array. "%s" was passed writeItem().',
+                gettype($item)
+            ));
+        }
+        $this->header = array_keys($item);
+        $this->writeItem($this->header);
     }
 }
