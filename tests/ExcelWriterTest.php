@@ -73,7 +73,7 @@ class ExcelWriterTest extends \PHPUnit_Framework_TestCase
         $this->writer->setHeader(['City', 'Country']);
         $this->writer->prepare();
     }
-    
+
     /**
      * @test
      * @covers Plum\PlumExcel\ExcelWriter::writeItem()
@@ -87,6 +87,71 @@ class ExcelWriterTest extends \PHPUnit_Framework_TestCase
         $this->excel->shouldReceive('getActiveSheet')->andReturn($sheet);
 
         $this->writer->writeItem(['City' => 'Vienna', 'Country' => 'Austria']);
+    }
+
+    /**
+     * @test
+     * @covers Plum\PlumExcel\ExcelWriter::writeItem()
+     */
+    public function writeItemWritesItemToExcelIfItemIsObjectWithProperties()
+    {
+        $sheet = $this->getMockWorksheet();
+        $sheet->shouldReceive('setCellValueByColumnAndRow')->with(0, 1, 'Vienna')->once();
+        $sheet->shouldReceive('setCellValueByColumnAndRow')->with(1, 1, 'Austria')->once();
+
+        $this->excel->shouldReceive('getActiveSheet')->andReturn($sheet);
+
+        $item = new \stdClass();
+        $item->City = 'Vienna';
+        $item->Country = 'Austria';
+
+        $this->writer->setHeader(['City', 'Country']);
+        $this->writer->writeItem($item);
+    }
+
+    /**
+     * @test
+     * @covers Plum\PlumExcel\ExcelWriter::writeItem()
+     */
+    public function writeItemWritesItemToExcelIfItemIsObjectHeadersSet()
+    {
+        $sheet = $this->getMockWorksheet();
+        $sheet->shouldReceive('setCellValueByColumnAndRow')->with(0, 1, 'Vienna')->once();
+        $sheet->shouldReceive('setCellValueByColumnAndRow')->with(1, 1, 'Austria')->once();
+
+        $this->excel->shouldReceive('getActiveSheet')->andReturn($sheet);
+
+        $item          = new \stdClass();
+        $item->City    = 'Vienna';
+        $item->Country = 'Austria';
+
+        $this->writer->setHeader(['City', 'Country']);
+        $this->writer->writeItem($item);
+    }
+
+    /**
+     * @test
+     * @covers Plum\PlumExcel\ExcelWriter::writeItem()
+     * @expectedException \InvalidArgumentException
+     */
+    public function writeItemThrowsExceptionIfItemIsObjectHeadersNotSet()
+    {
+        $item          = new \stdClass();
+        $item->City    = 'Vienna';
+        $item->Country = 'Austria';
+
+        $this->writer->writeItem($item);
+    }
+
+    /**
+     * @test
+     * @covers Plum\PlumExcel\ExcelWriter::writeItem()
+     * @expectedException \InvalidArgumentException
+     */
+    public function writeItemThrowsExceptionIfItemIsScalarEvenIfHeadersSet()
+    {
+        $this->writer->setHeader(['City']);
+        $this->writer->writeItem('Vienna');
     }
 
     /**
@@ -106,6 +171,18 @@ class ExcelWriterTest extends \PHPUnit_Framework_TestCase
 
         $this->writer->autoDetectHeader();
         $this->writer->writeItem(['City' => 'Vienna', 'Country' => 'Austria']);
+    }
+
+    /**
+     * @test
+     * @covers Plum\PlumExcel\ExcelWriter::autoDetectHeader()
+     * @covers Plum\PlumExcel\ExcelWriter::writeItem()
+     * @expectedException \InvalidArgumentException
+     */
+    public function writeItemThrowsExceptionIfAutoDetectHeaderIsTrueAndItemIsNotArray()
+    {
+        $this->writer->autoDetectHeader();
+        $this->writer->writeItem(new \stdClass());
     }
 
     /**
