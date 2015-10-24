@@ -99,6 +99,10 @@ $workflow->process(new ExcelReader($filename));
 Change Log
 ----------
 
+### Version 0.3 (24 October 2015)
+
+- [#2](https://github.com/plumphp/plum-excel/pull/2) Handle items that are not arrays 
+
 ### Version 0.2.1 (28 April 2015)
 
 - Fix Plum version
