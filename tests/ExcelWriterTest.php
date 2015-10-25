@@ -15,9 +15,8 @@ use Mockery;
 use org\bovigo\vfs\vfsStream;
 
 /**
- * ExcelWriterTest
+ * ExcelWriterTest.
  *
- * @package   Plum\PlumExcel
  * @author    Florian Eckerstorfer <florian@eckerstorfer.co>
  * @copyright 2015 Florian Eckerstorfer
  * @group     unit
@@ -101,8 +100,8 @@ class ExcelWriterTest extends \PHPUnit_Framework_TestCase
 
         $this->excel->shouldReceive('getActiveSheet')->andReturn($sheet);
 
-        $item = new \stdClass();
-        $item->City = 'Vienna';
+        $item          = new \stdClass();
+        $item->City    = 'Vienna';
         $item->Country = 'Austria';
 
         $this->writer->setHeader(['City', 'Country']);

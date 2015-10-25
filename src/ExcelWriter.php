@@ -18,9 +18,8 @@ use Plum\Plum\Writer\WriterInterface;
 use Cocur\Vale\Vale;
 
 /**
- * ExcelWriter
+ * ExcelWriter.
  *
- * @package   Plum\PlumExcel
  * @author    Florian Eckerstorfer <florian@eckerstorfer.co>
  * @copyright 2015 Florian Eckerstorfer
  */
@@ -109,8 +108,6 @@ class ExcelWriter implements WriterInterface
      * Write the given item.
      *
      * @param mixed $item
-     *
-     * @return void
      */
     public function writeItem($item)
     {
@@ -120,7 +117,7 @@ class ExcelWriter implements WriterInterface
 
         if (is_array($item)) {
             $keys = array_keys($item);
-        } else if ($this->header && is_object($item)) {
+        } elseif ($this->header && is_object($item)) {
             $keys = $this->header;
         } else {
             throw new \InvalidArgumentException(sprintf(
@@ -134,15 +131,13 @@ class ExcelWriter implements WriterInterface
         foreach ($keys as $key) {
             $value = Vale::get($item, $key);
             $this->excel->getActiveSheet()->setCellValueByColumnAndRow($column, $this->currentRow, $value);
-            $column++;
+            ++$column;
         }
-        $this->currentRow++;
+        ++$this->currentRow;
     }
 
     /**
      * Prepare the writer.
-     *
-     * @return void
      */
     public function prepare()
     {
@@ -157,8 +152,6 @@ class ExcelWriter implements WriterInterface
 
     /**
      * Finish the writer.
-     *
-     * @return void
      */
     public function finish()
     {

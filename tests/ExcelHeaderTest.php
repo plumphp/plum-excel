@@ -11,16 +11,15 @@
 
 namespace Plum\PlumExcel;
 
-use \PHPExcel_IOFactory;
+use PHPExcel_IOFactory;
 use Plum\Plum\Converter\HeaderConverter;
 use Plum\Plum\Filter\SkipFirstFilter;
 use Plum\Plum\Workflow;
 use Plum\Plum\Writer\ArrayWriter;
 
 /**
- * ExcelTest
+ * ExcelTest.
  *
- * @package   Plum\PlumExcel
  * @author    Florian Eckerstorfer <florian@eckerstorfer.co>
  * @copyright 2015 Florian Eckerstorfer
  * @group     functional
