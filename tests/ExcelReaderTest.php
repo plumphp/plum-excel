@@ -11,14 +11,11 @@
 
 namespace Plum\PlumExcel;
 
-use Mockery;
-use org\bovigo\vfs\vfsStream;
 use PHPExcel_IOFactory;
 
 /**
- * ExcelReaderTest
+ * ExcelReaderTest.
  *
- * @package   Plum\PlumExcel
  * @author    Florian Eckerstorfer <florian@eckerstorfer.co>
  * @copyright 2015 Florian Eckerstorfer
  * @group     unit
