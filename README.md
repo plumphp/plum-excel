@@ -6,8 +6,10 @@
 PHP.
 
 [![Build Status](https://img.shields.io/travis/plumphp/plum-excel.svg?style=flat)](https://travis-ci.org/plumphp/plum-excel)
+[![Windows Build status](https://ci.appveyor.com/api/projects/status/835tpvim8hb986ef?svg=true)](https://ci.appveyor.com/project/florianeckerstorfer/plum-excel)
 [![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/g/plumphp/plum-excel.svg?style=flat)](https://scrutinizer-ci.com/g/plumphp/plum-excel/?branch=master)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/plumphp/plum-excel.svg?style=flat)](https://scrutinizer-ci.com/g/plumphp/plum-excel/?branch=master)
+[![StyleCI](https://styleci.io/repos/31608543/shield)](https://styleci.io/repos/31608543)
 
 Developed by [Florian Eckerstorfer](https://florian.ec) in Vienna, Europe.
 
