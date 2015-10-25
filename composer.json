@@ -1,6 +1,13 @@
 {
-  "name": "plumphp/plum-excel",
-  "require": {
+  "name":       "plumphp/plum-excel",
+  "keywords":   ["excel", "plum", "import", "export", "xls", "xlsx"],
+  "license":    "MIT",
+  "authors":    [{
+    "name":     "Florian Eckerstorfer",
+    "email":    "florian@eckerstorfer.co",
+    "homepage": "https://florian.ec"
+  }],
+  "require":     {
     "php": ">=5.5",
     "plumphp/plum":       "~0.4",
     "phpoffice/phpexcel": "~1.8",
@@ -11,9 +18,7 @@
     "mikey179/vfsStream": "~1.6",
     "mockery/mockery":    "~0.9"
   },
-  "autoload": {
-    "psr-4": {
-      "Plum\\PlumExcel\\": "src"
-    }
+  "autoload":    {
+    "psr-4": {"Plum\\PlumExcel\\": "src"}
   }
 }
